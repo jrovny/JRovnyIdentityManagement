@@ -143,6 +143,17 @@ namespace JRovnySites.IdentityManagement.Data
 
                     b.ToTable("persisted_grant");
                 });
+
+            foreach (var entity in modelBuilder.Model.GetEntityTypes())
+            {
+                var createdDate = entity.AddProperty("CreatedDate", typeof(DateTime));
+                createdDate.SetColumnName("created_date");
+                createdDate.SetDefaultValueSql("now()");
+
+                var modifiedDate = entity.AddProperty("ModifiedDate", typeof(DateTime));
+                modifiedDate.SetColumnName("modified_date");
+                modifiedDate.SetDefaultValueSql("now()");
+            }
         }
     }
 }
