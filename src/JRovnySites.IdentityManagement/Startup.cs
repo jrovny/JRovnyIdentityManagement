@@ -36,7 +36,7 @@ namespace JRovnySites.IdentityManagement
                 // see https://identityserver4.readthedocs.io/en/latest/topics/resources.html
                 options.EmitStaticAudienceClaim = true;
             })
-            .AddConfigurationStore(options =>
+            .AddConfigurationStore<CustomConfigurationDbContext>(options =>
             {
                 options.ConfigureDbContext = b => b.UseNpgsql(connectionString,
                     sql => sql.MigrationsAssembly(_migrationsAssembly));
