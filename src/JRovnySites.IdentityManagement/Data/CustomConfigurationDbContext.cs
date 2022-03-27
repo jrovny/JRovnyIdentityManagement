@@ -51,6 +51,7 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasMaxLength(200);
 
                     b.Property<bool>("Enabled")
+                        .HasDefaultValue(false)
                         .HasColumnName("enabled")
                         .HasColumnType("boolean");
 
@@ -65,10 +66,12 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasMaxLength(200);
 
                     b.Property<bool>("NonEditable")
+                        .HasDefaultValue(false)
                         .HasColumnName("non_editable")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("ShowInDiscoveryDocument")
+                        .HasDefaultValue(false)
                         .HasColumnName("show_in_discovery_document")
                         .HasColumnType("boolean");
 
@@ -228,10 +231,12 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasMaxLength(200);
 
                     b.Property<bool>("Emphasize")
+                        .HasDefaultValue(false)
                         .HasColumnName("emphasize")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("Enabled")
+                        .HasDefaultValue(false)
                         .HasColumnName("enabled")
                         .HasColumnType("boolean");
 
@@ -242,10 +247,12 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasMaxLength(200);
 
                     b.Property<bool>("Required")
+                        .HasDefaultValue(false)
                         .HasColumnName("required")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("ShowInDiscoveryDocument")
+                        .HasDefaultValue(false)
                         .HasColumnName("show_in_discovery_document")
                         .HasColumnType("boolean");
 
@@ -334,18 +341,22 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("integer");
 
                     b.Property<bool>("AllowAccessTokensViaBrowser")
+                        .HasDefaultValue(false)
                         .HasColumnName("allow_access_tokens_via_browser")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("AllowOfflineAccess")
+                        .HasDefaultValue(false)
                         .HasColumnName("allow_offline_access")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("AllowPlainTextPkce")
+                        .HasDefaultValue(false)
                         .HasColumnName("allow_plain_text_pkce")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("AllowRememberConsent")
+                        .HasDefaultValue(false)
                         .HasColumnName("allow_remember_consent")
                         .HasColumnType("boolean");
 
@@ -355,10 +366,12 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasMaxLength(100);
 
                     b.Property<bool>("AlwaysIncludeUserClaimsInIdToken")
+                        .HasDefaultValue(false)
                         .HasColumnName("always_include_user_claims_in_id_token")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("AlwaysSendClientClaims")
+                        .HasDefaultValue(false)
                         .HasColumnName("always_send_client_claims")
                         .HasColumnType("boolean");
 
@@ -367,6 +380,7 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("integer");
 
                     b.Property<bool>("BackChannelLogoutSessionRequired")
+                        .HasDefaultValue(false)
                         .HasColumnName("back_channel_logout_session_required")
                         .HasColumnType("boolean");
 
@@ -414,14 +428,17 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("integer");
 
                     b.Property<bool>("EnableLocalLogin")
+                        .HasDefaultValue(false)
                         .HasColumnName("enable_local_login")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("Enabled")
+                        .HasDefaultValue(false)
                         .HasColumnName("enabled")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("FrontChannelLogoutSessionRequired")
+                        .HasDefaultValue(false)
                         .HasColumnName("front_channel_logout_session_required")
                         .HasColumnType("boolean");
 
@@ -435,6 +452,7 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("integer");
 
                     b.Property<bool>("IncludeJwtId")
+                        .HasDefaultValue(false)
                         .HasColumnName("include_jwt_id")
                         .HasColumnType("boolean");
 
@@ -448,6 +466,7 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasMaxLength(2000);
 
                     b.Property<bool>("NonEditable")
+                        .HasDefaultValue(false)
                         .HasColumnName("non_editable")
                         .HasColumnType("boolean");
 
@@ -471,18 +490,22 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("integer");
 
                     b.Property<bool>("RequireClientSecret")
+                        .HasDefaultValue(false)
                         .HasColumnName("require_client_secret")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("RequireConsent")
+                        .HasDefaultValue(false)
                         .HasColumnName("require_consent")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("RequirePkce")
+                        .HasDefaultValue(false)
                         .HasColumnName("require_pkce")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("RequireRequestObject")
+                        .HasDefaultValue(false)
                         .HasColumnName("require_request_object")
                         .HasColumnType("boolean");
 
@@ -491,6 +514,7 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("integer");
 
                     b.Property<bool>("UpdateAccessTokenClaimsOnRefresh")
+                        .HasDefaultValue(false)
                         .HasColumnName("update_access_token_claims_on_refresh")
                         .HasColumnType("boolean");
 
@@ -794,10 +818,12 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasMaxLength(200);
 
                     b.Property<bool>("Emphasize")
+                        .HasDefaultValue(false)
                         .HasColumnName("emphasize")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("Enabled")
+                        .HasDefaultValue(false)
                         .HasColumnName("enabled")
                         .HasColumnType("boolean");
 
@@ -808,14 +834,17 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasMaxLength(200);
 
                     b.Property<bool>("NonEditable")
+                        .HasDefaultValue(false)
                         .HasColumnName("non_editable")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("Required")
+                        .HasDefaultValue(false)
                         .HasColumnName("required")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("ShowInDiscoveryDocument")
+                        .HasDefaultValue(false)
                         .HasColumnName("show_in_discovery_document")
                         .HasColumnType("boolean");
 

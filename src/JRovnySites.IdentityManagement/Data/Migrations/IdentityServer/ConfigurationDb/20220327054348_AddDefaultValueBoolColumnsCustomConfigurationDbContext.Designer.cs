@@ -3,15 +3,17 @@ using System;
 using JRovnySites.IdentityManagement.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace JRovnySites.IdentityManagement.Data.Migrations.IdentityServer.ConfigurationDb
 {
     [DbContext(typeof(CustomConfigurationDbContext))]
-    partial class CustomConfigurationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220327054348_AddDefaultValueBoolColumnsCustomConfigurationDbContext")]
+    partial class AddDefaultValueBoolColumnsCustomConfigurationDbContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
