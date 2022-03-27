@@ -76,9 +76,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnName("updated")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_api_resource_id");
 
-                    b.HasIndex("Name").HasName("ix_name")
+                    b.HasIndex("Name").HasName("ix_api_resource_name")
                         .IsUnique();
 
                     b.ToTable("api_resource");
@@ -102,9 +102,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_api_resource_claim_id");
 
-                    b.HasIndex("ApiResourceId").HasName("ix_api_resource_id");
+                    b.HasIndex("ApiResourceId").HasName("ix_api_resource_claim_api_resource_id");
 
                     b.ToTable("api_resource_claim");
                 });
@@ -133,9 +133,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_api_resource_property_id");
 
-                    b.HasIndex("ApiResourceId").HasName("ix_api_resource_id");
+                    b.HasIndex("ApiResourceId").HasName("ix_api_resource_property_api_resource_id");
 
                     b.ToTable("api_resource_property");
                 });
@@ -158,9 +158,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_api_resource_scope_id");
 
-                    b.HasIndex("ApiResourceId").HasName("ix_api_resource_id");
+                    b.HasIndex("ApiResourceId").HasName("ix_api_resource_scope_api_resource_id");
 
                     b.ToTable("api_resource_scope");
                 });
@@ -202,9 +202,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(4000)")
                         .HasMaxLength(4000);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_api_resource_secret_id");
 
-                    b.HasIndex("ApiResourceId").HasName("ix_api_resource_id");
+                    b.HasIndex("ApiResourceId").HasName("ix_api_resource_secret_api_resource_id");
 
                     b.ToTable("api_resource_secret");
                 });
@@ -249,9 +249,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnName("show_in_discovery_document")
                         .HasColumnType("boolean");
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_api_scope_id");
 
-                    b.HasIndex("Name").HasName("ix_name")
+                    b.HasIndex("Name").HasName("ix_api_scope_name")
                         .IsUnique();
 
                     b.ToTable("api_scope");
@@ -275,9 +275,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_api_scope_claim_id");
 
-                    b.HasIndex("ScopeId").HasName("ix_scope_id");
+                    b.HasIndex("ScopeId").HasName("ix_api_scope_claim_scope_id");
 
                     b.ToTable("api_scope_claim");
                 });
@@ -306,9 +306,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_api_scope_property_id");
 
-                    b.HasIndex("ScopeId").HasName("ix_scope_id");
+                    b.HasIndex("ScopeId").HasName("ix_api_scope_property_scope_id");
 
                     b.ToTable("api_scope_property");
                 });
@@ -507,9 +507,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnName("user_sso_lifetime")
                         .HasColumnType("integer");
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_client_id");
 
-                    b.HasIndex("ClientId").HasName("ix_client_id")
+                    b.HasIndex("ClientId").HasName("ix_client_client_id")
                         .IsUnique();
 
                     b.ToTable("client");
@@ -539,9 +539,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(250)")
                         .HasMaxLength(250);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_client_claim_id");
 
-                    b.HasIndex("ClientId").HasName("ix_client_id");
+                    b.HasIndex("ClientId").HasName("ix_client_claim_client_id");
 
                     b.ToTable("client_claim");
                 });
@@ -564,9 +564,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(150)")
                         .HasMaxLength(150);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_client_cors_origin_id");
 
-                    b.HasIndex("ClientId").HasName("ix_client_id");
+                    b.HasIndex("ClientId").HasName("ix_client_cors_origin_client_id");
 
                     b.ToTable("client_cors_origin");
                 });
@@ -589,9 +589,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(250)")
                         .HasMaxLength(250);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_client_grant_type_id");
 
-                    b.HasIndex("ClientId").HasName("ix_client_id");
+                    b.HasIndex("ClientId").HasName("ix_client_grant_type_client_id");
 
                     b.ToTable("client_grant_type");
                 });
@@ -614,9 +614,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_client_idp_restriction_id");
 
-                    b.HasIndex("ClientId").HasName("ix_client_id");
+                    b.HasIndex("ClientId").HasName("ix_client_idp_restriction_client_id");
 
                     b.ToTable("client_idp_restriction");
                 });
@@ -639,9 +639,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_client_post_logout_redirect_uri_id");
 
-                    b.HasIndex("ClientId").HasName("ix_client_id");
+                    b.HasIndex("ClientId").HasName("ix_client_post_logout_redirect_uri_client_id");
 
                     b.ToTable("client_post_logout_redirect_uri");
                 });
@@ -670,9 +670,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_client_property_id");
 
-                    b.HasIndex("ClientId").HasName("ix_client_id");
+                    b.HasIndex("ClientId").HasName("ix_client_property_client_id");
 
                     b.ToTable("client_property");
                 });
@@ -695,9 +695,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_client_redirect_uri_id");
 
-                    b.HasIndex("ClientId").HasName("ix_client_id");
+                    b.HasIndex("ClientId").HasName("ix_client_redirect_uri_client_id");
 
                     b.ToTable("client_redirect_uri");
                 });
@@ -720,9 +720,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_client_scope_id");
 
-                    b.HasIndex("ClientId").HasName("ix_client_id");
+                    b.HasIndex("ClientId").HasName("ix_client_scope_client_id");
 
                     b.ToTable("client_scope");
                 });
@@ -764,9 +764,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(4000)")
                         .HasMaxLength(4000);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_client_secret_id");
 
-                    b.HasIndex("ClientId").HasName("ix_client_id");
+                    b.HasIndex("ClientId").HasName("ix_client_secret_client_id");
 
                     b.ToTable("client_secret");
                 });
@@ -823,9 +823,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnName("updated")
                         .HasColumnType("timestamp without time zone");
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_identity_resource_id");
 
-                    b.HasIndex("Name").HasName("ix_name")
+                    b.HasIndex("Name").HasName("ix_identity_resource_name")
                         .IsUnique();
 
                     b.ToTable("identity_resource");
@@ -849,9 +849,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_identity_resource_claim_id");
 
-                    b.HasIndex("IdentityResourceId").HasName("ix_identity_resource_id");
+                    b.HasIndex("IdentityResourceId").HasName("ix_identity_resource_claim_identity_resource_id");
 
                     b.ToTable("identity_resource_claim");
                 });
@@ -880,9 +880,9 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(2000)")
                         .HasMaxLength(2000);
 
-                    b.HasKey("Id").HasName("pk_id");
+                    b.HasKey("Id").HasName("pk_identity_resource_property_id");
 
-                    b.HasIndex("IdentityResourceId").HasName("ix_identity_resource_id");
+                    b.HasIndex("IdentityResourceId").HasName("ix_identity_resource_property_identity_resource_id");
 
                     b.ToTable("identity_resource_property");
                 });

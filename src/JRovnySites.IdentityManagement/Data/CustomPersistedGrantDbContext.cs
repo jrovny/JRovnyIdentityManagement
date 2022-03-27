@@ -71,12 +71,12 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
-                    b.HasKey("UserCode").HasName("pk_user_code");
+                    b.HasKey("UserCode").HasName("pk_device_code_user_code");
 
-                    b.HasIndex("DeviceCode").HasName("ix_device_code")
+                    b.HasIndex("DeviceCode").HasName("ix_device_code_device_code")
                         .IsUnique();
 
-                    b.HasIndex("Expiration").HasName("ix_expiration");
+                    b.HasIndex("Expiration").HasName("ix_device_code_expiration");
 
                     b.ToTable("device_code");
                 });
@@ -133,13 +133,13 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(50)")
                         .HasMaxLength(50);
 
-                    b.HasKey("Key").HasName("pk_key");
+                    b.HasKey("Key").HasName("pk_persisted_grant_key");
 
-                    b.HasIndex("Expiration").HasName("ix_expiration");
+                    b.HasIndex("Expiration").HasName("ix_persisted_grant_expiration");
 
-                    b.HasIndex("SubjectId", "ClientId", "Type").HasName("ix_subject_id_client_id_type");
+                    b.HasIndex("SubjectId", "ClientId", "Type").HasName("ix_persisted_grant_subject_id_client_id_type");
 
-                    b.HasIndex("SubjectId", "SessionId", "Type").HasName("ix_subject_id_session_id_type");
+                    b.HasIndex("SubjectId", "SessionId", "Type").HasName("ix_persisted_grant_subject_id_session_id_type");
 
                     b.ToTable("persisted_grant");
                 });
