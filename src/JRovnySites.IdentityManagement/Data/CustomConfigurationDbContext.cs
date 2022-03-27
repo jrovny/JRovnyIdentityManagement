@@ -51,7 +51,7 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasMaxLength(200);
 
                     b.Property<bool>("Enabled")
-                        .HasDefaultValue(false)
+                        .HasDefaultValue(true)
                         .HasColumnName("enabled")
                         .HasColumnType("boolean");
 
@@ -236,7 +236,7 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("boolean");
 
                     b.Property<bool>("Enabled")
-                        .HasDefaultValue(false)
+                        .HasDefaultValue(true)
                         .HasColumnName("enabled")
                         .HasColumnType("boolean");
 
@@ -329,14 +329,17 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
 
                     b.Property<int>("AbsoluteRefreshTokenLifetime")
+                        .HasDefaultValue(2592000)
                         .HasColumnName("absolute_refresh_token_lifetime")
                         .HasColumnType("integer");
 
                     b.Property<int>("AccessTokenLifetime")
+                        .HasDefaultValue(3600)
                         .HasColumnName("access_token_lifetime")
                         .HasColumnType("integer");
 
                     b.Property<int>("AccessTokenType")
+                        .HasDefaultValue(0) // AccessTokenType.Jwt
                         .HasColumnName("access_token_type")
                         .HasColumnType("integer");
 
@@ -376,11 +379,12 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("boolean");
 
                     b.Property<int>("AuthorizationCodeLifetime")
+                        .HasDefaultValue(300)
                         .HasColumnName("authorization_code_lifetime")
                         .HasColumnType("integer");
 
                     b.Property<bool>("BackChannelLogoutSessionRequired")
-                        .HasDefaultValue(false)
+                        .HasDefaultValue(true)
                         .HasColumnName("back_channel_logout_session_required")
                         .HasColumnType("boolean");
 
@@ -390,6 +394,7 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasMaxLength(2000);
 
                     b.Property<string>("ClientClaimsPrefix")
+                        .HasDefaultValue("client_")
                         .HasColumnName("client_claims_prefix")
                         .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
@@ -424,6 +429,7 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasMaxLength(1000);
 
                     b.Property<int>("DeviceCodeLifetime")
+                        .HasDefaultValue(300)
                         .HasColumnName("device_code_lifetime")
                         .HasColumnType("integer");
 
@@ -433,12 +439,12 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("boolean");
 
                     b.Property<bool>("Enabled")
-                        .HasDefaultValue(false)
+                        .HasDefaultValue(true)
                         .HasColumnName("enabled")
                         .HasColumnType("boolean");
 
                     b.Property<bool>("FrontChannelLogoutSessionRequired")
-                        .HasDefaultValue(false)
+                        .HasDefaultValue(true)
                         .HasColumnName("front_channel_logout_session_required")
                         .HasColumnType("boolean");
 
@@ -448,6 +454,7 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasMaxLength(2000);
 
                     b.Property<int>("IdentityTokenLifetime")
+                        .HasDefaultValue(300)
                         .HasColumnName("identity_token_lifetime")
                         .HasColumnType("integer");
 
@@ -477,15 +484,18 @@ namespace JRovnySites.IdentityManagement.Data
 
                     b.Property<string>("ProtocolType")
                         .HasColumnName("protocol_type")
+                        .HasDefaultValue("oidc")
                         .IsRequired()
                         .HasColumnType("character varying(200)")
                         .HasMaxLength(200);
 
                     b.Property<int>("RefreshTokenExpiration")
+                        .HasDefaultValue(1) // TokenExpiration.Absolute
                         .HasColumnName("refresh_token_expiration")
                         .HasColumnType("integer");
 
                     b.Property<int>("RefreshTokenUsage")
+                        .HasDefaultValue(1) // TokenUsage.OneTimeOnly
                         .HasColumnName("refresh_token_usage")
                         .HasColumnType("integer");
 
@@ -510,6 +520,7 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("boolean");
 
                     b.Property<int>("SlidingRefreshTokenLifetime")
+                        .HasDefaultValue(1296000)
                         .HasColumnName("sliding_refresh_token_lifetime")
                         .HasColumnType("integer");
 
@@ -823,7 +834,7 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("boolean");
 
                     b.Property<bool>("Enabled")
-                        .HasDefaultValue(false)
+                        .HasDefaultValue(true)
                         .HasColumnName("enabled")
                         .HasColumnType("boolean");
 
