@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using IdentityServer4;
+using JRovnySites.IdentityManagement.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -40,7 +41,7 @@ namespace JRovnySites.IdentityManagement
                 options.ConfigureDbContext = b => b.UseNpgsql(connectionString,
                     sql => sql.MigrationsAssembly(_migrationsAssembly));
             })
-            .AddOperationalStore(options =>
+            .AddOperationalStore<CustomPersistedGrantDbContext>(options =>
             {
                 options.ConfigureDbContext = b => b.UseNpgsql(connectionString,
                     sql => sql.MigrationsAssembly(_migrationsAssembly));
