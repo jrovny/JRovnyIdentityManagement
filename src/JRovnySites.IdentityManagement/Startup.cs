@@ -3,6 +3,7 @@ using IdentityServer4;
 using JRovnySites.IdentityManagement.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,6 +31,12 @@ namespace JRovnySites.IdentityManagement
 
             if (connectionString == null)
                 throw new System.Exception("No connection string found");
+
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
             var builder = services.AddIdentityServer(options =>
             {
