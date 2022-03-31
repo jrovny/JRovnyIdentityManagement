@@ -305,6 +305,16 @@ namespace JRovnySites.IdentityManagement.Data
                         .IsRequired();
                 });
 
+            foreach (var entity in builder.Model.GetEntityTypes())
+            {
+                var createdDate = entity.AddProperty("CreatedDate", typeof(DateTime));
+                createdDate.SetColumnName("created_date");
+                createdDate.SetDefaultValueSql("now()");
+
+                var modifiedDate = entity.AddProperty("ModifiedDate", typeof(DateTime));
+                modifiedDate.SetColumnName("modified_date");
+                modifiedDate.SetDefaultValueSql("now()");
+            }
         }
     }
 }
