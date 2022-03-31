@@ -46,11 +46,13 @@ namespace JRovnySites.IdentityManagement.Data
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnName("email_confirmed")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnName("lockout_enabled")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
 
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnName("lockout_end")
@@ -76,7 +78,8 @@ namespace JRovnySites.IdentityManagement.Data
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnName("phone_number_confirmed")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnName("security_stamp")
@@ -84,7 +87,8 @@ namespace JRovnySites.IdentityManagement.Data
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnName("two_factor_enabled")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasDefaultValue(false);
 
                     b.Property<string>("UserName")
                         .HasColumnName("user_name")
