@@ -95,6 +95,16 @@ namespace JRovnySites.IdentityManagement.Data
                         .HasColumnType("character varying(256)")
                         .HasMaxLength(256);
 
+                    b.Property<string>("FirstName")
+                        .HasColumnName("first_name")
+                        .HasColumnType("character varying(256)")
+                        .HasMaxLength(256);
+
+                    b.Property<string>("LastName")
+                        .HasColumnName("last_name")
+                        .HasColumnType("character varying(256)")
+                        .HasMaxLength(256);
+
                     b.HasKey("Id").HasName("pk_identity_user_id");
 
                     b.HasIndex("NormalizedEmail")
