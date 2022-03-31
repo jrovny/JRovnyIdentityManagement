@@ -189,21 +189,21 @@ namespace IdentityServerHost.Quickstart.UI
             }
             else
             {
-                var first = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.GivenName)?.Value ??
+                var firstName = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.GivenName)?.Value ??
                     claims.FirstOrDefault(x => x.Type == ClaimTypes.GivenName)?.Value;
-                var last = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.FamilyName)?.Value ??
+                var lastName = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.FamilyName)?.Value ??
                     claims.FirstOrDefault(x => x.Type == ClaimTypes.Surname)?.Value;
-                if (first != null && last != null)
+                if (firstName != null && lastName != null)
                 {
-                    filtered.Add(new Claim(JwtClaimTypes.Name, first + " " + last));
+                    filtered.Add(new Claim(JwtClaimTypes.Name, firstName + " " + lastName));
                 }
-                else if (first != null)
+                else if (firstName != null)
                 {
-                    filtered.Add(new Claim(JwtClaimTypes.Name, first));
+                    filtered.Add(new Claim(JwtClaimTypes.Name, firstName));
                 }
-                else if (last != null)
+                else if (lastName != null)
                 {
-                    filtered.Add(new Claim(JwtClaimTypes.Name, last));
+                    filtered.Add(new Claim(JwtClaimTypes.Name, lastName));
                 }
             }
 
