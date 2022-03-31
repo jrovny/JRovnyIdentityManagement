@@ -34,7 +34,7 @@ namespace JRovnySites.IdentityManagement
 
             services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole<int>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
