@@ -180,19 +180,21 @@ namespace IdentityServerHost.Quickstart.UI
             // create a list of claims that we want to transfer into our store
             var filtered = new List<Claim>();
 
+            string firstName = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.GivenName)?.Value ??
+                claims.FirstOrDefault(x => x.Type == ClaimTypes.GivenName)?.Value;
+            string lastName = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.FamilyName)?.Value ??
+                claims.FirstOrDefault(x => x.Type == ClaimTypes.Surname)?.Value;
+
             // user's display name
             var name = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.Name)?.Value ??
                 claims.FirstOrDefault(x => x.Type == ClaimTypes.Name)?.Value;
+
             if (name != null)
             {
                 filtered.Add(new Claim(JwtClaimTypes.Name, name));
             }
             else
             {
-                var firstName = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.GivenName)?.Value ??
-                    claims.FirstOrDefault(x => x.Type == ClaimTypes.GivenName)?.Value;
-                var lastName = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.FamilyName)?.Value ??
-                    claims.FirstOrDefault(x => x.Type == ClaimTypes.Surname)?.Value;
                 if (firstName != null && lastName != null)
                 {
                     filtered.Add(new Claim(JwtClaimTypes.Name, firstName + " " + lastName));
@@ -207,6 +209,16 @@ namespace IdentityServerHost.Quickstart.UI
                 }
             }
 
+            if (!string.IsNullOrWhiteSpace(firstName))
+            {
+                filtered.Add(new Claim(JwtClaimTypes.GivenName, firstName));
+            }
+
+            if (!string.IsNullOrWhiteSpace(lastName))
+            {
+                filtered.Add(new Claim(JwtClaimTypes.FamilyName, lastName));
+            }
+
             // email
             var email = claims.FirstOrDefault(x => x.Type == JwtClaimTypes.Email)?.Value ??
                claims.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
@@ -217,7 +229,9 @@ namespace IdentityServerHost.Quickstart.UI
 
             var user = new ApplicationUser
             {
-                UserName = Guid.NewGuid().ToString(),
+                UserName = email ?? Guid.NewGuid().ToString(),
+                LastName = lastName,
+                FirstName = firstName
             };
             var identityResult = await _userManager.CreateAsync(user);
             if (!identityResult.Succeeded) throw new Exception(identityResult.Errors.First().Description);
