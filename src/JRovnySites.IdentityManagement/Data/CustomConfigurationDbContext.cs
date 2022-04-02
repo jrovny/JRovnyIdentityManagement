@@ -38,6 +38,7 @@ namespace JRovnySites.IdentityManagement.Data
 
                     b.Property<DateTime>("Created")
                         .HasColumnName("created")
+                        .HasDefaultValueSql("now()")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
@@ -182,6 +183,7 @@ namespace JRovnySites.IdentityManagement.Data
 
                     b.Property<DateTime>("Created")
                         .HasColumnName("created")
+                        .HasDefaultValueSql("now()")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
@@ -421,6 +423,7 @@ namespace JRovnySites.IdentityManagement.Data
 
                     b.Property<DateTime>("Created")
                         .HasColumnName("created")
+                        .HasDefaultValueSql("now()")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
@@ -776,6 +779,7 @@ namespace JRovnySites.IdentityManagement.Data
 
                     b.Property<DateTime>("Created")
                         .HasColumnName("created")
+                        .HasDefaultValueSql("now()")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
@@ -816,6 +820,7 @@ namespace JRovnySites.IdentityManagement.Data
 
                     b.Property<DateTime>("Created")
                         .HasColumnName("created")
+                        .HasDefaultValueSql("now()")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("Description")
