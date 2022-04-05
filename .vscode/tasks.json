@@ -36,6 +36,62 @@
                 "${workspaceFolder}/src/JRovnySites.IdentityManagement/JRovnySites.IdentityManagement.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: debug",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "jrovnyidentitymanagement:dev",
+                "target": "base",
+                "dockerfile": "${workspaceFolder}/src/JRovnySites.IdentityManagement/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/src/JRovnySites.IdentityManagement/JRovnySites.IdentityManagement.csproj"
+            }
+        },
+        {
+            "type": "docker-build",
+            "label": "docker-build: release",
+            "dependsOn": [
+                "build"
+            ],
+            "dockerBuild": {
+                "tag": "jrovnyidentitymanagement:latest",
+                "dockerfile": "${workspaceFolder}/src/JRovnySites.IdentityManagement/Dockerfile",
+                "context": "${workspaceFolder}",
+                "pull": true
+            },
+            "netCore": {
+                "appProject": "${workspaceFolder}/src/JRovnySites.IdentityManagement/JRovnySites.IdentityManagement.csproj"
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: debug",
+            "dependsOn": [
+                "docker-build: debug"
+            ],
+            "dockerRun": {},
+            "netCore": {
+                "appProject": "${workspaceFolder}/src/JRovnySites.IdentityManagement/JRovnySites.IdentityManagement.csproj",
+                "enableDebugging": true
+            }
+        },
+        {
+            "type": "docker-run",
+            "label": "docker-run: release",
+            "dependsOn": [
+                "docker-build: release"
+            ],
+            "dockerRun": {},
+            "netCore": {
+                "appProject": "${workspaceFolder}/src/JRovnySites.IdentityManagement/JRovnySites.IdentityManagement.csproj"
+            }
         }
     ]
 }
