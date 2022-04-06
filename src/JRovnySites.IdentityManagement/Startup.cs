@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace JRovnySites.IdentityManagement
 {
@@ -83,6 +84,7 @@ namespace JRovnySites.IdentityManagement
             else
             {
                 string x509CertificatePath = _configuration["X509CertificatePath"];
+                Log.Information($"X509CertificatePath: '{x509CertificatePath}'");
                 if (string.IsNullOrWhiteSpace(x509CertificatePath))
                 {
                     throw new System.Exception("No X509CertificatePath found");
