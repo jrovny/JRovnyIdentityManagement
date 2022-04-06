@@ -16,7 +16,7 @@ namespace JRovnySites.IdentityManagement
                 store.Open(OpenFlags.ReadOnly);
                 var certs = store.Certificates.Find(X509FindType.FindByTimeValid, DateTime.Now, false);
                 if (certs.Count == 0)
-                    return null;
+                    throw new Exception($"No certificate found in path: '{x509CertificatePath}'");
 
                 return certs[0];
             }
