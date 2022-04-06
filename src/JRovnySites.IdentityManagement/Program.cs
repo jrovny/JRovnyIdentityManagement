@@ -37,7 +37,6 @@ namespace JRovnySites.IdentityManagement
             }
             catch (Exception ex)
             {
-                Log.Information("Error occurred.");
                 Log.Fatal(ex, "Host terminated unexpectedly.");
                 return 1;
             }
