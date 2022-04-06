@@ -82,20 +82,23 @@ namespace JRovnySites.IdentityManagement
                     options.ClientSecret = clientSecret;
                 });
 
-            if (Environment.IsDevelopment())
-            {
-                builder.AddDeveloperSigningCredential();
-            }
-            else
-            {
-                string x509CertificatePath = _configuration["X509CertificatePath"];
-                Log.Information($"X509CertificatePath: '{x509CertificatePath}'");
-                if (string.IsNullOrWhiteSpace(x509CertificatePath))
-                {
-                    throw new System.Exception("No X509CertificatePath found");
-                }
-                builder.AddSigningCredential(X509CertificateManager.GetX509Certificate2(x509CertificatePath));
-            }
+            Log.Information("Added Google authentication");
+
+            // if (Environment.IsDevelopment())
+            // {
+            Log.Information($"Using developer signing credential");
+            builder.AddDeveloperSigningCredential();
+            // }
+            // else
+            // {
+            //     string x509CertificatePath = _configuration["X509CertificatePath"];
+            //     Log.Information($"X509CertificatePath: '{x509CertificatePath}'");
+            //     if (string.IsNullOrWhiteSpace(x509CertificatePath))
+            //     {
+            //         throw new System.Exception("No X509CertificatePath found");
+            //     }
+            //     builder.AddSigningCredential(X509CertificateManager.GetX509Certificate2(x509CertificatePath));
+            // }
         }
 
         public void Configure(IApplicationBuilder app)
