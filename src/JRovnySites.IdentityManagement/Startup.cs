@@ -82,7 +82,12 @@ namespace JRovnySites.IdentityManagement
             }
             else
             {
-                builder.AddSigningCredential(X509CertificateManager.GetX509Certificate2(_configuration["X509CertificatePath"]));
+                string x509CertificatePath = _configuration["X509CertificatePath"];
+                if (string.IsNullOrWhiteSpace(x509CertificatePath))
+                {
+                    throw new System.Exception("No X509CertificatePath found");
+                }
+                builder.AddSigningCredential(X509CertificateManager.GetX509Certificate2(x509CertificatePath));
             }
         }
 
