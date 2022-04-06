@@ -3,6 +3,7 @@ using IdentityServer4;
 using JRovnySites.IdentityManagement.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +27,14 @@ namespace JRovnySites.IdentityManagement
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders =
+                    ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+                options.KnownNetworks.Clear();
+                options.KnownProxies.Clear();
+            });
 
             var connectionString = _configuration.GetConnectionString("Default");
 
@@ -67,12 +76,20 @@ namespace JRovnySites.IdentityManagement
                     options.ClientSecret = clientSecret;
                 });
 
-            // not recommended for production - you need to store your key material somewhere secure
-            builder.AddDeveloperSigningCredential();
+            if (Environment.IsDevelopment())
+            {
+                builder.AddDeveloperSigningCredential();
+            }
+            else
+            {
+                builder.AddSigningCredential(X509CertificateManager.GetX509Certificate2(_configuration["X509CertificatePath"]));
+            }
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            app.UseForwardedHeaders();
+
             if (Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
