@@ -92,7 +92,6 @@ namespace JRovnySites.IdentityManagement
             else
             {
                 string x509CertificatePath = _configuration["X509CertificatePath"];
-                string password = _configuration["X509CertificatePassword"];
 
                 Log.Information($"X509CertificatePath: '{x509CertificatePath}'");
 
@@ -100,7 +99,7 @@ namespace JRovnySites.IdentityManagement
                 {
                     throw new System.Exception("No X509CertificatePath found");
                 }
-                builder.AddSigningCredential(X509CertificateManager.GetX509Certificate2(x509CertificatePath, password));
+                builder.AddSigningCredential(X509CertificateManager.GetX509Certificate2(x509CertificatePath));
             }
         }
 
