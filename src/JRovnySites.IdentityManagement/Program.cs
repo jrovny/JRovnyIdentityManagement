@@ -49,7 +49,10 @@ namespace JRovnySites.IdentityManagement
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .UseSerilog((context, logger) =>
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                }).UseSerilog((context, logger) =>
                 {
                     var isDevelopment = context.HostingEnvironment.IsDevelopment();
                     logger.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning);
@@ -61,11 +64,6 @@ namespace JRovnySites.IdentityManagement
                         rollingInterval: RollingInterval.Day,
                         retainedFileCountLimit: null,
                         rollOnFileSizeLimit: true);
-                }
-                )
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
                 });
     }
 }
