@@ -66,7 +66,8 @@ namespace JRovnySites.IdentityManagement
                 options.ConfigureDbContext = b => b.UseNpgsql(connectionString,
                     sql => sql.MigrationsAssembly(_migrationsAssembly));
             })
-            .AddAspNetIdentity<ApplicationUser>();
+            .AddAspNetIdentity<ApplicationUser>()
+            .AddProfileService<CustomProfileService>();
 
             IConfigurationSection configurationSection =
                 _configuration.GetSection("ApplicationSettings").GetSection("Google");
