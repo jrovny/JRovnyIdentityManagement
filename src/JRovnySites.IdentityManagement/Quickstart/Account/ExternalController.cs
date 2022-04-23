@@ -101,7 +101,8 @@ namespace IdentityServerHost.Quickstart.UI
                 // this might be where you might initiate a custom workflow for user registration
                 // in this sample we don't show how that would be done, as our sample implementation
                 // simply auto-provisions new external user
-                throw new Exception("Unknown user");
+                // throw new Exception("Unknown user");
+                return View("Error");
                 // user = await AutoProvisionUserAsync(provider, providerUserId, claims);
             }
 
