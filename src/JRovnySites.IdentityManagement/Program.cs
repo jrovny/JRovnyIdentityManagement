@@ -54,7 +54,12 @@ namespace JRovnySites.IdentityManagement
                 }).UseSerilog((context, logger) =>
                 {
                     var isDevelopment = context.HostingEnvironment.IsDevelopment();
-                    logger.MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning);
+
+                    logger.MinimumLevel.Debug()
+                        .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                        .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
+                        .MinimumLevel.Override("System", LogEventLevel.Warning)
+                        .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information);
                     logger.Enrich.FromLogContext();
                     if (isDevelopment)
                         logger.WriteTo.Console();
