@@ -67,7 +67,8 @@ namespace JRovnySites.IdentityManagement
                     sql => sql.MigrationsAssembly(_migrationsAssembly));
             })
             .AddAspNetIdentity<ApplicationUser>()
-            .AddProfileService<CustomProfileService>();
+            .AddProfileService<CustomProfileService>()
+            .AddAppAuthRedirectUriValidator();
 
             IConfigurationSection configurationSection =
                 _configuration.GetSection("ApplicationSettings").GetSection("Google");
